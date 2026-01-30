@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dr Mbuyisa – Traditional Healer | Volksrust</title>
+  <meta name="description" content="Qualified traditional healer in Volksrust, Mpumalanga. Herbal remedies, spiritual guidance, ancestral consultation."/>
+  
+  <style>
+    :root {
+      --primary: #8B4513;
+      --primary-dark: #6B3A0F;
+      --accent: #DAA520;
+      --bg: #FDF6F0;
+      --light: #ffffff;
+      --text: #3A2A1F;
+      --gray: #6B5A4A;
+      --nav-bg: rgba(139, 69, 19, 0.55);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: var(--nav-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      color: white;
+      padding: 1rem 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      transition: background 0.4s;
+    }
+
+    header.scrolled {
+      background: rgba(139, 69, 19, 0.92);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .logo { font-size: 1.9rem; font-weight: 700; letter-spacing: 1px; }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--accent); transform: translateY(-2px); }
+
+    .lang-toggle {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: white;
+      padding: 0.7rem 1.4rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    .lang-toggle:hover { background: rgba(255,255,255,0.28); transform: scale(1.05); }
+
+    .hamburger {
+      display: none;
+      font-size: 2.2rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: white;
+    }
+
+    main { max-width: 1200px; margin: 0 auto; padding: 7rem 1.5rem 4rem; }
+
+    .hero {
+      position: relative;
+      min-height: 70vh;
+      height: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      overflow: visible;
+      border-radius: 0 0 30px 30px;
+      margin-bottom: 4rem;
+      padding: 3rem 1rem;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(139,69,19,0.55);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 90%;
+      padding: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: 3.8rem;
+      margin-bottom: 1.2rem;
+      text-shadow: 0 3px 10px rgba(0,0,0,0.7);
+      line-height: 1.15;
+      word-break: break-word;
+      hyphens: auto;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      margin-bottom: 2.5rem;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    }
+
+    .slider { position: absolute; inset: 0; }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.8s ease-in-out;
+    }
+
+    .slide.active { opacity: 1; }
+
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      background: #25D366;
+      color: white;
+      padding: 1.3rem 3rem;
+      border-radius: 60px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3rem;
+      box-shadow: 0 8px 25px rgba(37,213,102,0.4);
+      transition: all 0.4s;
+    }
+
+    .btn-whatsapp:hover {
+      transform: translateY(-6px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(37,213,102,0.6);
+    }
+
+    .whatsapp-icon { width: 32px; height: 32px; }
+
+    section {
+      margin-bottom: 6rem;
+      padding: 4rem 3rem;
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    }
+
+    h2 {
+      color: var(--primary);
+      margin-bottom: 2.5rem;
+      font-size: 2.8rem;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    #about .about-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    #about .about-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4rem;
+      align-items: flex-start;
+    }
+
+    .about-text {
+      flex: 1;
+      min-width: 340px;
+      font-size: 1.22rem;
+    }
+
+    .about-text p { margin-bottom: 2rem; }
+
+    .about-image-container {
+      flex: 1;
+      min-width: 340px;
+      text-align: center;
+    }
+
+    .about-image {
+      width: 100%;
+      max-width: 580px;
+      height: auto;
+      border-radius: 28px;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.22);
+      border: 10px solid #fdf0e6;
+      object-fit: cover;
+    }
+
+    .qualifications {
+      margin-top: 3rem;
+      padding: 2rem;
+      background: #fffaf5;
+      border-radius: 16px;
+      border-left: 6px solid var(--primary);
+    }
+
+    .qualifications h3 {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+    }
+
+    .qualifications ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .qualifications li {
+      margin-bottom: 1.2rem;
+      font-size: 1.15rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .qualifications li::before {
+      content: "✓";
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 1.4rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .service-card {
+      background: #fffaf5;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      transition: all 0.4s;
+      text-align: center;
+    }
+
+    .service-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.2);
+    }
+
+    .service-img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border-bottom: 6px solid var(--primary);
+    }
+
+    .service-content {
+      padding: 1.8rem;
+    }
+
+    .service-content h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    #contact {
+      background: linear-gradient(135deg, #fffaf5, #fdf0e6);
+      text-align: center;
+      padding: 5.5rem 3rem;
+      border-radius: 32px;
+    }
+
+    #contact h2 { margin-bottom: 3.5rem; }
+
+    .contact-info {
+      max-width: 750px;
+      margin: 0 auto;
+      font-size: 1.45rem;
+    }
+
+    .contact-info p {
+      margin: 2.2rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+    }
+
+    .contact-icon { font-size: 2.5rem; }
+
+    .btn-contact-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 1.3rem;
+      margin-top: 3.5rem;
+      background: #25D366;
+      color: white;
+      padding: 1.6rem 4rem;
+      border-radius: 80px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.6rem;
+      box-shadow: 0 12px 40px rgba(37,213,102,0.5);
+      transition: all 0.4s;
+    }
+
+    .btn-contact-whatsapp:hover {
+      transform: translateY(-10px) scale(1.07);
+      box-shadow: 0 25px 60px rgba(37,213,102,0.7);
+    }
+
+    footer {
+      text-align: center;
+      padding: 4rem 1rem;
+      background: var(--primary);
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    .disclaimer {
+      font-size: 1rem;
+      color: #6B5A4A;
+      text-align: center;
+      margin: 5.5rem 0 3.5rem;
+      padding: 2.2rem;
+      border-top: 1px solid #e0d0c0;
+      background: rgba(255,255,255,0.65);
+      border-radius: 18px;
+    }
+
+    @media (max-width: 992px) {
+      #about .about-container { flex-direction: column; text-align: center; }
+      .about-image { max-width: 500px; }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        min-height: 60vh;
+        padding: 5rem 1.5rem 6rem;
+      }
+
+      .hero h1 {
+        font-size: 2.6rem;
+        margin-bottom: 1.2rem;
+      }
+
+      .hero p {
+        font-size: 1.25rem;
+      }
+
+      .hamburger { display: block; }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--primary);
+        padding: 1.5rem;
+        text-align: center;
+      }
+
+      .nav-links.active { display: flex; }
+
+      .services-grid { grid-template-columns: 1fr; }
+
+      #contact { padding: 4.5rem 2rem; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2.2rem; }
+      .hero p { font-size: 1.1rem; }
+      .hero-content { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">Dr Mbuyisa</div>
+      <button class="hamburger" onclick="toggleMenu()">☰</button>
+      <div class="nav-links" id="navMenu">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#qualifications">Qualifications</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="lang-toggle" onclick="toggleLanguage()">English / isiZulu</button>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero" id="home">
+      <div class="slider">
+        <div class="slide active" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/1/1a/Sangoma_reading_the_Bones.jpg');"></div>
+        <div class="slide" style="background-image: url('https://i.ytimg.com/vi/22S5bdnumJk/maxresdefault.jpg');"></div>
+        <div class="slide" style="background-image: url('http://media1.s-nbcnews.com/i/MSNBC/Components/Photo/_new/090219-traditional-meds-bcol-3p.jpg');"></div>
+      </div>
+
+      <div class="hero-content">
+        <h1 data-en="Welcome to Dr Mbuyisa" data-zu="Siyakwamukela kuDr Mbuyisa">Welcome to Dr Mbuyisa</h1>
+        <p data-en="Qualified Traditional Healer • Volksrust, Mpumalanga<br>Herbal Remedies • Spiritual Guidance • Ancestral Consultation"
+           data-zu="iSangoma eligunyaziwe • Volksrust, Mpumalanga<br>Imithi yesintu • Ukuholwa ngokomoya • Ukubonisana namadlozi">
+          Qualified Traditional Healer • Volksrust, Mpumalanga<br>Herbal Remedies • Spiritual Guidance • Ancestral Consultation
+        </p>
+        <a href="https://wa.me/27XXXXXXXXX?text=Hello%20Dr%20Mbuyisa,%20I%20would%20like%20to%20book%20a%20consultation" 
+           class="btn-whatsapp" target="_blank">
+          <img src="https://download.logo.wine/logo/WhatsApp/WhatsApp-Logo.wine.png" alt="WhatsApp" class="whatsapp-icon"/>
+          <span data-en="Contact via WhatsApp" data-zu="Thintana nge-WhatsApp">Contact via WhatsApp</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="about-header">
+        <h2 data-en="About Dr Mbuyisa" data-zu="Mayelana noDr Mbuyisa">About Dr Mbuyisa</h2>
+      </div>
+      
+      <div class="about-container">
+        <div class="about-text">
+          <p data-en="Dr Mbuyisa is a highly respected and fully qualified traditional healer (sangoma and inyanga) proudly serving the community of Volksrust, Mpumalanga, and surrounding areas.<br><br>Called by the ancestors from a young age, Dr Mbuyisa underwent the rigorous initiation process known as ukuthwasa under the guidance of experienced mentors. This multi-year training included deep spiritual development, mastery of divination techniques (such as throwing bones/ukubhula), extensive knowledge of indigenous herbs and muti preparation, ancestral communication, and rituals for cleansing, protection, and harmony.<br><br>With over 15 years of dedicated practice, Dr Mbuyisa is committed to restoring balance in body, mind, and spirit. Services are delivered with utmost confidentiality, cultural respect, and compassion."
+             data-zu="UDr Mbuyisa uyisangoma kanye nenyanga eligunyaziwe futhi elihlonishwayo elisebenza emphakathini waseVolksrust, Mpumalanga, nasezindaweni ezizungezile.<br><br>Ebizwe amadlozi esemncane, uDr Mbuyisa waqeda inqubo yokuqeqeshwa eqinile yokuthwasa ngaphansi kwezikhokelo zabafundisi abanolwazi. Lokhu kuqeqeshwa kweminyaka eminingi kwakuhlanganisa ukuthuthukiswa ngokomoya okujulile, ukuphatha ubuchwepheshe bokubhula (njengokuphonsa amathambo), ulwazi oluningi lwemithi yendabuko nokulungiswa kwemithi, ukuxhumana namadlozi, nemikhuba yokugeza, ukuvikela nokuzwana.<br><br>Eneminyaka engaphezu kweyi-15 yokusebenza okuzinikele, uDr Mbuyisa uzinikele ekubuyiseleni ukulingana emzimbeni, engqondweni nasemoyeni. Izinsizakalo zinikezwa ngokugcinwa kuyimfihlo okuphezulu, inhlonipho yamasiko, nobubele.">
+            Dr Mbuyisa is a highly respected and fully qualified traditional healer (sangoma and inyanga) proudly serving the community of Volksrust, Mpumalanga, and surrounding areas.<br><br>Called by the ancestors from a young age, Dr Mbuyisa underwent the rigorous initiation process known as ukuthwasa under the guidance of experienced mentors. This multi-year training included deep spiritual development, mastery of divination techniques (such as throwing bones/ukubhula), extensive knowledge of indigenous herbs and muti preparation, ancestral communication, and rituals for cleansing, protection, and harmony.<br><br>With over 15 years of dedicated practice, Dr Mbuyisa is committed to restoring balance in body, mind, and spirit. Services are delivered with utmost confidentiality, cultural respect, and compassion.
+          </p>
+        </div>
+
+        <div class="about-image-container">
+          <img src="https://c8.alamy.com/comp/2D91CHX/sabi-sabi-south-africa-may-5-2012-african-male-traditional-healer-known-as-a-sangoma-or-witch-doctor-performing-a-spiritual-reading-2D91CHX.jpg" alt="Dr Mbuyisa – Qualified Traditional Healer" class="about-image"/>
+        </div>
+      </div>
+
+      <div class="qualifications" id="qualifications">
+        <h3 data-en="Qualifications & Training" data-zu="Iziqu & Ukuqeqeshwa">Qualifications & Training</h3>
+        <ul>
+          <li>Ancestral calling (ukubizwa ngamadlozi) and completed ukuthwasa initiation</li>
+          <li>Advanced training in herbal medicine and traditional muti formulation</li>
+          <li>Expert in bone throwing (ukubhula) and other divination methods</li>
+          <li>Specialized in spiritual cleansing, protection rituals, and ancestral veneration</li>
+          <li>Affiliated with recognized traditional healer organizations in Mpumalanga</li>
+          <li>Over 15 years of continuous practice and community service</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="services">
+      <h2 data-en="Services" data-zu="Izinsizakalo">Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Sangoma_reading_the_Bones.jpg" alt="Sangoma throwing bones for ukubhula divination" class="service-img"/>
+          <div class="service-content">
+            <h3 data-en="Traditional consultation & diagnosis (ukubhula)" data-zu="Ukubonisana kwesintu nokuxilonga (ukubhula)">Traditional consultation & diagnosis (ukubhula)</h3>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <img src="https://media1.s-nbcnews.com/i/MSNBC/Components/Photo/_new/090219-traditional-meds-bcol-3p.jpg" alt="Traditional herbal muti remedies preparation" class="service-img"/>
+          <div class="service-content">
+            <h3 data-en="Herbal remedies & muti preparation" data-zu="Imithi yesintu nokulungiswa kwemithi">Herbal remedies & muti preparation</h3>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <img src="https://www.dailydispatch.co.za/resizer/v2/JN7EWIZRIJNCRMCH6TCOQ5EPZ4.jpg?auth=71d15d1f3b88606cb5ce01e84c922a704ce9b06de9f68003aa1901e6712cf971&width=800&height=533&smart=true" alt="Sangoma burning impepho for spiritual cleansing and protection" class="service-img"/>
+          <div class="service-content">
+            <h3 data-en="Spiritual cleansing & protection (ukugeza / ukuvikela)" data-zu="Ukugeza ngokomoya nokuvikela">Spiritual cleansing & protection (ukugeza / ukuvikela)</h3>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <img src="https://i.ytimg.com/vi/-55Su6de9Wg/maxresdefault.jpg" alt="Person in spiritual dream or ancestral vision" class="service-img"/>
+          <div class="service-content">
+            <h3 data-en="Ancestral guidance & communication" data-zu="Ukuholwa namadlozi nokuxhumana nawo">Ancestral guidance & communication</h3>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <img src="https://thumbs.dreamstime.com/b/silhouette-couple-traditional-african-attire-embracing-sunset-322427124.jpg" alt="African couple embracing at sunset symbolizing love and harmony" class="service-img"/>
+          <div class="service-content">
+            <h3 data-en="Help with love, relationships & family harmony" data-zu="Usizo lwezindaba zothando, ubudlelwano nomndeni">Help with love, relationships & family harmony</h3>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Sangoma_reading_the_Bones.jpg" alt="Protective muti for business luck and against negativity" class="service-img"/>
+          <div class="service-content">
+            <h3 data-en="Business luck & protection from negativity" data-zu="Ukusiza ibhizinisi nokuvikela ekubi">Business luck & protection from negativity</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 data-en="Get in Touch" data-zu="Thintana Nathi">Get in Touch</h2>
+      <div class="contact-info">
+        <p><span class="contact-icon">📍</span> <strong data-en="Location:" data-zu="Indawo:">Location:</strong> Volksrust, Mpumalanga (private consultations – address shared after booking)</p>
+        <p><span class="contact-icon">📞</span> <strong data-en="WhatsApp / Phone:" data-zu="WhatsApp / Ucingo:">WhatsApp / Phone:</strong> +27 [Your Number Here]</p>
+        <p><span class="contact-icon">🕒</span> <strong data-en="Availability:" data-zu="Ukutholakala:">Availability:</strong> By appointment only • Quick response via WhatsApp</p>
+
+        <a href="https://wa.me/27XXXXXXXXX?text=Hello%20Dr%20Mbuyisa,%20I%20would%20like%20to%20book%20a%20consultation" 
+           class="btn-contact-whatsapp" target="_blank">
+          <img src="https://download.logo.wine/logo/WhatsApp/WhatsApp-Logo.wine.png" alt="WhatsApp" class="whatsapp-icon"/>
+          <span data-en="Message on WhatsApp" data-zu="Thumela ku-WhatsApp">Message on WhatsApp</span>
+        </a>
+      </div>
+    </section>
+
+    <div class="disclaimer" 
+         data-en="Services are spiritual and traditional in nature. Not a substitute for medical treatment. Consult a qualified doctor for health concerns."
+         data-zu="Izinsizakalo zingokomoya nezesintu. Akuyona indawo yokwelapha yesimanje. Thintana nodokotela oqeqeshiwe ngezinkinga zempilo.">
+      Services are spiritual and traditional in nature. Not a substitute for medical treatment. Consult a qualified doctor for health concerns.
+    </div>
+
+  </main>
+
+  <footer>
+    <p data-en="&copy; 2026 Dr Mbuyisa – Qualified Traditional Healer | Volksrust, Mpumalanga" 
+       data-zu="&copy; 2026 Dr Mbuyisa – iSangoma eligunyaziwe | Volksrust, Mpumalanga">
+      © 2026 Dr Mbuyisa – Qualified Traditional Healer | Volksrust, Mpumalanga
+    </p>
+  </footer>
+
+  <script>
+    function toggleLanguage() {
+      const current = document.documentElement.getAttribute('data-lang');
+      const next = current === 'en' ? 'zu' : 'en';
+      document.documentElement.setAttribute('data-lang', next);
+      document.querySelectorAll('[data-en][data-zu]').forEach(el => {
+        el.innerHTML = el.getAttribute(`data-${next}`);
+      });
+    }
+
+    function toggleMenu() {
+      document.getElementById('navMenu').classList.toggle('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      toggleLanguage(); toggleLanguage();
+
+      window.addEventListener('scroll', () => {
+        document.querySelector('header').classList.toggle('scrolled', window.scrollY > 80);
+      });
+
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          document.getElementById('navMenu').classList.remove('active');
+        });
+      });
+    });
+
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    setInterval(nextSlide, 6000);
+  </script>
+
+</body>
+</html>
